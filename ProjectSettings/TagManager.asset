@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - PlayerProjectile
+  - Enemy
+  - Obstacles
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Blue Ground
+    uniqueID: 2256896047
+    locked: 0
+  - name: Ground
+    uniqueID: 2424787001
+    locked: 0
+  - name: Terrain
+    uniqueID: 3206283415
+    locked: 0
+  - name: Terrain Overlay
+    uniqueID: 3859806089
+    locked: 0
+  - name: Character
+    uniqueID: 1857399851
+    locked: 0
+  - name: Enemy
+    uniqueID: 2204589025
+    locked: 0
+  - name: Projectile
+    uniqueID: 1675868683
+    locked: 0

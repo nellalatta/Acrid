@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ace57c837c954ad458b26e8f07bdd943
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - openedChestSprite: {instanceID: 0}
+  - interactTextPrefab: {instanceID: 0}
+  - lootTable: {fileID: 11400000, guid: 174f6d52b447bf544aa382ac0d9c45fc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
