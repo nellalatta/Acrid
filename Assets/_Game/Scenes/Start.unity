@@ -10682,6 +10682,107 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &860700288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860700289}
+  - component: {fileID: 860700291}
+  - component: {fileID: 860700290}
+  - component: {fileID: 860700292}
+  m_Layer: 5
+  m_Name: InventoryPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &860700289
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860700288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.57, y: 0.57, z: 0.57}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1363440634}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &860700290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860700288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &860700291
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860700288}
+  m_CullTransparentMesh: 1
+--- !u!114 &860700292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860700288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 50
+    m_Right: 50
+    m_Top: 50
+    m_Bottom: 50
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 80, y: 80}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 2
+  m_ConstraintCount: 2
 --- !u!1 &1314062140
 GameObject:
   m_ObjectHideFlags: 0
@@ -10727,6 +10828,7 @@ GameObject:
   - component: {fileID: 1363440637}
   - component: {fileID: 1363440636}
   - component: {fileID: 1363440635}
+  - component: {fileID: 1363440638}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10747,6 +10849,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 232216245}
+  - {fileID: 860700289}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10817,6 +10920,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1363440638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363440633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7257b9affa071764fbf15e0600a79189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 860700288}
+  itemSlotContainer: {fileID: 860700289}
+  itemSlotPrefab: {fileID: 6350164183640805962, guid: 368a215810711314f8f0d3aafa8585b3, type: 3}
 --- !u!1 &1514136465
 GameObject:
   m_ObjectHideFlags: 0
@@ -10916,7 +11034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1590788532}
-  distance: 1
+  distanceFromPlayer: 1
   mainProjectile: {fileID: 2010353208241911722, guid: 1a0976264f5cc3347bcd607f0be54a36, type: 3}
   mainProjectileSpawnPoint: {fileID: 552231908}
 --- !u!1 &1590788530
@@ -10932,6 +11050,7 @@ GameObject:
   - component: {fileID: 1590788536}
   - component: {fileID: 1590788534}
   - component: {fileID: 1590788535}
+  - component: {fileID: 1590788537}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -11035,6 +11154,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 2083610652}
+--- !u!114 &1590788537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590788530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cc54b275da9704a927252821d6fb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+    items:
+    - item: {fileID: 11400000, guid: ac7161d52148ea2468a253fc2a3c3989, type: 2}
+      quantity: 1
 --- !u!1 &1595169759
 GameObject:
   m_ObjectHideFlags: 0
@@ -21222,7 +21357,7 @@ Tilemap:
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: 480960610, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
-      m_AnimationSpeed: 2.5518007
+      m_AnimationSpeed: 2.2346883
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: 1, z: 0}
@@ -21232,7 +21367,7 @@ Tilemap:
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: 480960610, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
-      m_AnimationSpeed: 3.9760327
+      m_AnimationSpeed: 3.9452028
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
