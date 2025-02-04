@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6989717731171825654}
   - component: {fileID: 6989717731171825649}
   - component: {fileID: 6989717731171825648}
+  - component: {fileID: -2675091887731375087}
   m_Layer: 8
   m_Name: Pills
   m_TagString: Untagged
@@ -95,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -111,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2675091887731375087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989717731171825650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063ae0c1ac981cd4c9fbea4552b05527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootItem: {fileID: 11400000, guid: ac7161d52148ea2468a253fc2a3c3989, type: 2}
