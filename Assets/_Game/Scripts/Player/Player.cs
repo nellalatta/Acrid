@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHealth = 10f;
+    [SerializeField] private PlayerStats stats;
     [SerializeField] private HealthBar healthBar;
 
     private float currentHealth;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        if (stats == null)
+            stats = new PlayerStats();
+
+        currentHealth = stats.maxHealth;
         healthBar = GetComponentInChildren<HealthBar>();
-        healthBar.UpdateHealthBar(maxHealth, maxHealth);
+        healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
     }
 
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
 
         if (currentHealth <= 0)
         {
@@ -27,4 +30,19 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public void ApplyStatModifier(string stat, float value)
+    {
+        stats.ModifyStat(stat, value);
+
+        if (stat == "maxHealth")
+        {
+            currentHealth = stats.maxHealth;
+            healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
+        }
+    }
+
+    public PlayerStats GetStats()
+    {
+        return stats;
+    }
 }
