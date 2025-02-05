@@ -74,10 +74,8 @@ public class Chest : MonoBehaviour, IInteractable
         // Check if there are enough resources
         if (resourceManager.GetResourceCount() >= chestCost)
         {
-            // Deduct the cost
             resourceManager.RemoveResources(chestCost);
 
-            // Open the chest
             isOpened = true;
 
             if (openedChestSprite != null)
@@ -90,7 +88,7 @@ public class Chest : MonoBehaviour, IInteractable
                 Destroy(interactTextTMP.gameObject);
             }
 
-            // Destroy ChestCost child object
+            // Destroy ChestCost text object
             Transform chestCostText = transform.Find("ChestCost");
             if (chestCostText != null)
             {

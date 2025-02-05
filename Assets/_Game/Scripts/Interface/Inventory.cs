@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public class Inventory
 {
-    public List<ItemSlot> items = new List<ItemSlot>();
+    public List<ItemSlot> items = new List<ItemSlot>(); // Could use dictionary but would not keep order
 
     public void AddItem(LootItem item, int quantity = 1)
     {
