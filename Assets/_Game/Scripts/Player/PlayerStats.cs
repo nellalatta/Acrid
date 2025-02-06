@@ -2,9 +2,9 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class PlayerStats
+public class PlayerStats : MonoBehaviour
 {
-    public float moveSpeed = 50f;
+    public float moveSpeed = 100f;
     public float maxHealth = 10f;
     public float shootSpeed = 1f;
     public float mainDamage = 5f;

@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D playerCollider;
 
     private Vector2 moveDir = Vector2.zero;
     private Directions facingDirection = Directions.RIGHT;
@@ -25,7 +25,7 @@ public class Player_Controller : MonoBehaviour
 
     private void Awake()
     {
-        colliderOffsetRight = collider.offset;
+        colliderOffsetRight = playerCollider.offset;
     }
 
     private void Update()
@@ -67,12 +67,12 @@ public class Player_Controller : MonoBehaviour
         if (facingDirection == Directions.LEFT)
         {
             spriteRenderer.flipX = true;
-            collider.offset = colliderOffsetLeft;
+            playerCollider.offset = colliderOffsetLeft;
         }
         else if (facingDirection == Directions.RIGHT)
         {
             spriteRenderer.flipX = false;
-            collider.offset = colliderOffsetRight;
+            playerCollider.offset = colliderOffsetRight;
         }
 
         if (moveDir.SqrMagnitude() > 0) // SqrMagnitude is better for performance than just magnitude; symbolizes ANY movement

@@ -11,8 +11,10 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        if (stats == null)
-            stats = new PlayerStats();
+        // if (stats == null) TODO remove or replace with automatically assigning object's components
+        // {
+        //     stats = GetComponent<PlayerStats>();
+        // }
 
         currentHealth = stats.maxHealth;
         healthBar = GetComponentInChildren<HealthBar>();
