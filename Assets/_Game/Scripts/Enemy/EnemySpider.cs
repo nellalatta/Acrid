@@ -8,8 +8,9 @@ public class EnemySpider : MonoBehaviour, IDamageable
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float shootingRange = 5f;
     [SerializeField] private float shootCooldown = 2f;
+    [SerializeField] private int resourcesOnDeath = 100;
     // [SerializeField] private float moveSpeed = 2f;
-    
+
     private float currentHealth;
     private Transform player;
     private ResourceManager resourceManager;
@@ -65,7 +66,7 @@ public class EnemySpider : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
-            resourceManager.AddResources(15);
+            resourceManager.AddResources(resourcesOnDeath);
         }
     }
 
