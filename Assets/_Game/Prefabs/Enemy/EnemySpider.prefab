@@ -188,7 +188,7 @@ MonoBehaviour:
   healthBar: {fileID: 4299746460522595690}
   shootingRange: 5
   shootCooldown: 2
-  moveSpeed: 1
+  resourcesOnDeath: 100
 --- !u!114 &4299746458796710994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+  stopDistance: 3
 --- !u!1 &4299746459663306202
 GameObject:
   m_ObjectHideFlags: 0

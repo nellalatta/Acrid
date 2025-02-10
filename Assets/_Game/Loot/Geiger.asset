@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Geiger
   m_EditorClassIdentifier: 
   itemName: Geiger
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 6989717731171825650, guid: c8fb1c8801bdde840b60be639dd3170a, type: 3}
   rarity: 50
   maxStacks: 99
   statModifiers:
