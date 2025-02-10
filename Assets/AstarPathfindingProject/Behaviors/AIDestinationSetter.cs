@@ -18,7 +18,13 @@ namespace Pathfinding {
 		public Transform target;
 		IAstarAI ai;
         public float stopDistance = 1f; // Distance at which the enemy stops moving towards the player
+        public float dodgeDistance = 2f; // How far enemies dodge left or right
+        public float dodgeInterval = 2f; // Time between dodges
+        public float chaseDelay = 1.5f; // Time to wait before chasing again when player moves out of range
 
+        private float lastDodgeTime;
+        private float lastLostPlayerTime;
+        private bool waitingToChase;
 		void OnEnable () {
 			ai = GetComponent<IAstarAI>();
 			// Update the destination right before searching for a path as well.
@@ -35,16 +41,36 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Updates the AI's destination every frame</summary>
-		void Update () {
-			if (target != null && ai != null) {
-                float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+		void Update() {
+			if (target == null || ai == null) return;
 
-                if (distanceToPlayer > stopDistance) {
-                    ai.destination = target.position; // Move towards the player
-                } else {
-                    ai.destination = transform.position; // Stop moving
-                }
-            }
+			float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+
+			if (distanceToPlayer > stopDistance) {
+				if (waitingToChase) return;
+
+				ai.destination = target.position;
+				lastLostPlayerTime = Time.time; // Reset chase delay timer
+			} 
+			else {
+				// Player in range, dodge
+				if (Time.time - lastDodgeTime > dodgeInterval) {
+					lastDodgeTime = Time.time;
+					Vector3 dodgeDirection = (Random.value < 0.5f ? -1f : 1f) * transform.right * dodgeDistance;
+					ai.destination = transform.position + dodgeDirection;
+				}
+			}
+
+			// Start delay when player leaves range
+			if (distanceToPlayer > stopDistance && !waitingToChase) {
+				StartCoroutine(WaitBeforeChasing());
+			}
+		}
+
+		private IEnumerator WaitBeforeChasing() {
+			waitingToChase = true;
+			yield return new WaitForSeconds(chaseDelay);
+			waitingToChase = false;
 		}
 	}
 }

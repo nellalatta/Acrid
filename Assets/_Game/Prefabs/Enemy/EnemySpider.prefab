@@ -287,7 +287,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
-  stopDistance: 3
+  stopDistance: 4
+  dodgeDistance: 2
+  dodgeInterval: 2
+  chaseDelay: 1.5
 --- !u!1 &4299746459663306202
 GameObject:
   m_ObjectHideFlags: 0
