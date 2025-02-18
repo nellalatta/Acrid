@@ -15,6 +15,8 @@ public class Player_Aim_Indicator : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.gamePaused) return;
+
         UpdatePositionAndRotation();
         HandleMainShooting();
     }
