@@ -7,11 +7,13 @@ public class Player_Aim_Indicator : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float distanceFromPlayer = 1f;
-    [SerializeField] private GameObject mainProjectile; // MainProjectile prefab to instantiate
+    [SerializeField] private GameObject mainProjectile;
     [SerializeField] private Transform mainProjectileSpawnPoint;
+    [SerializeField] private PlayerStats playerStats;
 
     private GameObject projectileInstance;
     private float angle;
+    private float lastShotTime = 0f;
 
     void Update()
     {
@@ -39,9 +41,15 @@ public class Player_Aim_Indicator : MonoBehaviour
 
     private void HandleMainShooting()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.isPressed && CanShoot())
         {
             projectileInstance = Instantiate(mainProjectile, mainProjectileSpawnPoint.position, Quaternion.Euler(0f, 0f, angle));
+            lastShotTime = Time.time;
         }
+    }
+
+    private bool CanShoot()
+    {
+        return Time.time - lastShotTime >= playerStats.primaryCooldown;
     }
 }

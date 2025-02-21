@@ -7,11 +7,11 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private Sprite openedChestSprite;
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private int chestCost = 100;
-    [SerializeField] private GameObject interactTextPrefab;
+    [SerializeField] private GameObject interactText; // Note: slightly better performance to serialize child objects than always doing transform.Find()
+    [SerializeField] private GameObject costText;
     [SerializeField] private LootTable lootTable;
 
     private bool isOpened = false;
-    private GameObject interactTextTMP;
     private SpriteRenderer spriteRenderer;
     private ResourceManager resourceManager;
 
@@ -19,11 +19,9 @@ public class Chest : MonoBehaviour, IInteractable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Create the "E to buy" text but make it inactive initially
-        if (interactTextPrefab != null)
+        if (interactText != null)
         {
-            interactTextTMP = Instantiate(interactTextPrefab, transform.position + Vector3.up * 1.5f, Quaternion.identity);
-            interactTextTMP.SetActive(false);
+            interactText.SetActive(false);
         }
 
         resourceManager = FindObjectOfType<ResourceManager>();
@@ -37,33 +35,18 @@ public class Chest : MonoBehaviour, IInteractable
     {
         if (isOpened) return;
 
-        if (IsAnyPlayerInRange())
-        {
-            if (interactTextTMP != null)
-            {
-                interactTextTMP.SetActive(true); // Show the "E to buy" text
-            }
+        bool playerInRange = IsAnyPlayerInRange();
 
-            // Check if a player presses E
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-                {
-                    float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-                    if (distanceToPlayer <= interactionRange)
-                    {
-                        Interact();
-                        break;
-                    }
-                }
-            }
-        }
-        else
+        // Show the "E to buy" text
+        if (interactText != null)
         {
-            if (interactTextTMP != null)
-            {
-                interactTextTMP.SetActive(false); // Hide the "E to buy" text
-            }
+            interactText.SetActive(playerInRange);
+        }
+
+        // If player in range and presses "E", open chest
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
         }
     }
 
@@ -75,7 +58,6 @@ public class Chest : MonoBehaviour, IInteractable
         if (resourceManager.GetResourceCount() >= chestCost)
         {
             resourceManager.RemoveResources(chestCost);
-
             isOpened = true;
 
             if (openedChestSprite != null)
@@ -83,16 +65,14 @@ public class Chest : MonoBehaviour, IInteractable
                 spriteRenderer.sprite = openedChestSprite;
             }
 
-            if (interactTextTMP != null)
+            // Destroy the chest cost & interact text
+            if (interactText != null)
             {
-                Destroy(interactTextTMP.gameObject);
+                interactText.SetActive(false);
             }
-
-            // Destroy ChestCost text object
-            Transform chestCostText = transform.Find("ChestCost");
-            if (chestCostText != null)
+            if (costText != null)
             {
-                Destroy(chestCostText.gameObject);
+                costText.SetActive(false);
             }
 
             SpawnLoot();
@@ -102,7 +82,6 @@ public class Chest : MonoBehaviour, IInteractable
             Debug.Log("Not enough resources to open the chest!");
         }
     }
-    
 
     private bool IsAnyPlayerInRange()
     {
@@ -113,7 +92,6 @@ public class Chest : MonoBehaviour, IInteractable
                 return true;
             }
         }
-
         return false;
     }
 

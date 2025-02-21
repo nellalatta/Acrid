@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float mainDamage = 5f;
     public float critChance = 0.1f;
     public float critDamageMultiplier = 2f;
+    public float primaryCooldown = 1f;
 
     public event Action OnStatsChanged;
 
@@ -23,6 +24,7 @@ public class PlayerStats : MonoBehaviour
             case "MainDamage": mainDamage += value; break;
             case "CritChance": critChance += value; break;
             case "CritDamageMultiplier": critDamageMultiplier += value; break;
+            case "PrimaryCooldown": primaryCooldown += value; break;
             default: Debug.LogWarning($"Stat {statName} not found!"); return;
         }
         OnStatsChanged?.Invoke(); // TODO This will notify listeners of stat changes

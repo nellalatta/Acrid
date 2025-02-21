@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-    private void Pause() // TODO Unallow player input while paused
+    private void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f; // Can use for slow motion effects later
