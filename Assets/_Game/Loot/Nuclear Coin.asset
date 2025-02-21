@@ -31,6 +31,6 @@ MonoBehaviour:
     value: 0
   - key: PrimaryCooldown
     value: -0.2
-  modifyHealth: -20
+  modifyHealth: -15
   visualEffect: {fileID: 0}
   newAbilityPrefab: {fileID: 0}
