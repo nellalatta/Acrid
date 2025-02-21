@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class LootPickup : MonoBehaviour
 {
-    public LootItem lootItem;
+    [SerializeField] public LootItem lootItem;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            Player player = other.GetComponent<Player>();
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             if (inventory != null)
             {
                 inventory.AddItem(lootItem);
-                Destroy(gameObject);
             }
+
+            if (player != null)
+            {
+                player.ModifyHealth(lootItem.modifyHealth);
+            }
+
+            Destroy(gameObject);
         }
     }
 }

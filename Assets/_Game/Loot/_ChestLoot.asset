@@ -15,3 +15,5 @@ MonoBehaviour:
   lootItems:
   - {fileID: 11400000, guid: ac7161d52148ea2468a253fc2a3c3989, type: 2}
   - {fileID: 11400000, guid: e28dc90d4dea2234d829df8f2d3ac451, type: 2}
+  - {fileID: 11400000, guid: 6001e8f2e2e376a4aa83dd1d3148f9c2, type: 2}
+  - {fileID: 11400000, guid: 89c48837154665144ba692f093f55c52, type: 2}

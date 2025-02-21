@@ -6,7 +6,6 @@ public class PlayerStats : MonoBehaviour
 {
     public float moveSpeed = 100f;
     public float maxHealth = 10f;
-    public float shootSpeed = 1f;
     public float mainDamage = 5f;
     public float critChance = 0.1f;
     public float critDamageMultiplier = 2f;
@@ -20,7 +19,6 @@ public class PlayerStats : MonoBehaviour
         {
             case "MoveSpeed": moveSpeed += value; break;
             case "MaxHealth": maxHealth += value; break;
-            case "ShootSpeed": shootSpeed += value; break;
             case "MainDamage": mainDamage += value; break;
             case "CritChance": critChance += value; break;
             case "CritDamageMultiplier": critDamageMultiplier += value; break;

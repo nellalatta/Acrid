@@ -29,5 +29,6 @@ MonoBehaviour:
     value: 0
   - key: CritDamageMultiplier
     value: 0
+  modifyHealth: 0
   visualEffect: {fileID: 0}
   newAbilityPrefab: {fileID: 0}

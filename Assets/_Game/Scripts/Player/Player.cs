@@ -36,7 +36,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         stats.ModifyStat(stat, value);
 
-        if (stat == "maxHealth")
+        if (stat == "MaxHealth")
         {
             currentHealth = stats.maxHealth;
             healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
@@ -46,5 +46,13 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerStats GetStats()
     {
         return stats;
+    }
+
+    public void ModifyHealth(int modifyHealth)
+    {
+        Debug.Log("Modifying health by " + modifyHealth);
+        currentHealth += modifyHealth;
+        currentHealth = Mathf.Clamp(currentHealth, 0, stats.maxHealth);
+        healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
     }
 }

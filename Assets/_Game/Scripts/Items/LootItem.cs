@@ -4,24 +4,26 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "New Loot Item", menuName = "Loot Item")]
 public class LootItem : ScriptableObject
 {
-    public string itemName;
-    public GameObject itemPrefab;
-    public int rarity;
-    public int maxStacks = 99;
+    [SerializeField] public string itemName;
+    [SerializeField] public GameObject itemPrefab;
+    [SerializeField] public int rarity;
+    [SerializeField] public int maxStacks = 99;
 
     public List<StatModifier> statModifiers = new List<StatModifier>
     {
         new StatModifier { key = "MoveSpeed", value = 0f },
         new StatModifier { key = "MaxHealth", value = 0f },
-        new StatModifier { key = "ShootSpeed", value = 0f },
         new StatModifier { key = "MainDamage", value = 0f },
         new StatModifier { key = "CritChance", value = 0f },
-        new StatModifier { key = "CritDamageMultiplier", value = 0f }
+        new StatModifier { key = "CritDamageMultiplier", value = 0f },
+        new StatModifier { key = "PrimaryCooldown", value = 0f }
     };
 
-    public GameObject visualEffect;
+    [SerializeField] public int modifyHealth = 0;
 
-    public GameObject newAbilityPrefab;
+    [SerializeField] public GameObject visualEffect;
+
+    [SerializeField] public GameObject newAbilityPrefab;
 }
 
 [System.Serializable]
