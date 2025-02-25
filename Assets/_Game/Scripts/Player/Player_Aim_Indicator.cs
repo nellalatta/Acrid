@@ -8,7 +8,7 @@ public class Player_Aim_Indicator : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float distanceFromPlayer = 1f;
     [SerializeField] private GameObject mainProjectile;
-    [SerializeField] private Transform mainProjectileSpawnPoint;
+    [SerializeField] public Transform mainProjectileSpawnPoint;
     [SerializeField] private PlayerStats playerStats;
 
     private GameObject projectileInstance;

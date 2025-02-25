@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e549cddcb3f54b9169d538bfed9e4, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  abilityName: Bomb
+  icon: {fileID: 1357285821, guid: dca0d2d8a63fdc14694f7fa7c9d4f4d5, type: 3}
+  cooldownTime: 15
+  bombPrefab: {fileID: 6488299934807868417, guid: 0b40ef986611576419f740a55b58bb36, type: 3}

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class PlayerAbilities : MonoBehaviour
     [SerializeField] private List<Ability> abilities = new List<Ability>();
     private Dictionary<Ability, float> cooldowns = new Dictionary<Ability, float>();
 
-    public event System.Action<Ability, float> OnCooldownUpdated; // TODO Will notify UI 
+    public event System.Action<Ability, float> OnCooldownUpdated;
 
     private void Update()
     {
@@ -18,12 +17,16 @@ public class PlayerAbilities : MonoBehaviour
     private void UpdateCooldowns()
     {
         List<Ability> cooldownKeys = new List<Ability>(cooldowns.Keys);
-        foreach (var ability in cooldownKeys)
+        foreach (Ability ability in cooldownKeys)
         {
             cooldowns[ability] -= Time.deltaTime;
-            OnCooldownUpdated?.Invoke(ability, Mathf.Max(0, cooldowns[ability])); // TODO Update UI
+            float timeLeft = Mathf.Max(0, cooldowns[ability]);
+            OnCooldownUpdated?.Invoke(ability, timeLeft);
+
             if (cooldowns[ability] <= 0)
+            {
                 cooldowns.Remove(ability);
+            }
         }
     }
 
@@ -45,12 +48,10 @@ public class PlayerAbilities : MonoBehaviour
 
     public void UseAbility(Ability ability)
     {
-        if (!cooldowns.ContainsKey(ability))
-        {
-            ability.Activate(gameObject);
-            cooldowns[ability] = ability.cooldownTime;
-            OnCooldownUpdated?.Invoke(ability, ability.cooldownTime); // TODO Notify UI
-        }
+        if (cooldowns.ContainsKey(ability)) return;
+        ability.Activate(gameObject);
+        cooldowns[ability] = ability.cooldownTime;
+        OnCooldownUpdated?.Invoke(ability, ability.cooldownTime);
     }
 
     public List<Ability> GetAbilities() => abilities;
