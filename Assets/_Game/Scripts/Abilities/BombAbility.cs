@@ -14,20 +14,14 @@ public class BombAbility : Ability
 
     public override void Activate(GameObject player)
     {
-        Player_Aim_Indicator aim = player.GetComponent<Player_Aim_Indicator>();
-
-        if (aim == null)
-        {
-            Debug.LogError("aim indicator not found");
-        }
-
-        Transform spawnPoint = (aim != null) ? aim.mainProjectileSpawnPoint : player.transform;
+        Player_Aim_Indicator aim = player.GetComponentInChildren<Player_Aim_Indicator>();
+        Transform spawnPoint = aim.mainProjectileSpawnPoint;
 
         GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
         Rigidbody2D rb = bomb.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = spawnPoint.right * bombSpeed;
+            rb.velocity = -spawnPoint.up * bombSpeed;
         }
 
         BombBehaviour bombScript = bomb.GetComponent<BombBehaviour>();
