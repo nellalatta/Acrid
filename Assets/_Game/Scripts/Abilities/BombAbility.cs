@@ -7,16 +7,33 @@ public class BombAbility : Ability
 {
     public GameObject bombPrefab;
 
-    public override void Activate(GameObject player) // TODO Test implementation
+    public float bombSpeed = 10f;
+    public float explosionRadius = 2f;
+    public float explosionDamage = 2f;
+    public LayerMask damageableLayers;
+
+    public override void Activate(GameObject player)
     {
         Player_Aim_Indicator aim = player.GetComponent<Player_Aim_Indicator>();
-        if (aim != null)
+
+        if (aim == null)
         {
-            Instantiate(bombPrefab, aim.mainProjectileSpawnPoint.position, aim.mainProjectileSpawnPoint.rotation);
+            Debug.LogError("aim indicator not found");
         }
-        else
+
+        Transform spawnPoint = (aim != null) ? aim.mainProjectileSpawnPoint : player.transform;
+
+        GameObject bomb = Instantiate(bombPrefab, spawnPoint.position, spawnPoint.rotation);
+        Rigidbody2D rb = bomb.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            Instantiate(bombPrefab, player.transform.position, player.transform.rotation);
+            rb.velocity = spawnPoint.right * bombSpeed;
+        }
+
+        BombBehaviour bombScript = bomb.GetComponent<BombBehaviour>();
+        if (bombScript != null)
+        {
+            bombScript.Initialize(explosionRadius, explosionDamage, damageableLayers);
         }
     }
 }

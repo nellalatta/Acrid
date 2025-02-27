@@ -16,3 +16,9 @@ MonoBehaviour:
   icon: {fileID: 1357285821, guid: dca0d2d8a63fdc14694f7fa7c9d4f4d5, type: 3}
   cooldownTime: 15
   bombPrefab: {fileID: 6488299934807868417, guid: 0b40ef986611576419f740a55b58bb36, type: 3}
+  bombSpeed: 10
+  explosionRadius: 5
+  explosionDamage: 2
+  damageableLayers:
+    serializedVersion: 2
+    m_Bits: 768
