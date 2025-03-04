@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemySpider : MonoBehaviour, IDamageable
 {
@@ -23,6 +24,7 @@ public class EnemySpider : MonoBehaviour, IDamageable
     private float shootTimer;
     private Vector2 moveDir = Vector2.zero;
     private Directions facingDirection = Directions.RIGHT;
+    private AIPath aiPath;
     
 
     private readonly int animMove = Animator.StringToHash("Enemy_Spider_Walk_Right");
@@ -42,6 +44,8 @@ public class EnemySpider : MonoBehaviour, IDamageable
 
         resourceManager = FindObjectOfType<ResourceManager>();
         colliderOffsetRight = enemyCollider.offset;
+
+        aiPath = GetComponent<AIPath>();
     }
 
     private void Update()
@@ -79,19 +83,25 @@ public class EnemySpider : MonoBehaviour, IDamageable
 
     private void UpdateAnimation()
     {
+        Vector2 velocity = aiPath.velocity;
+
+        if (velocity.x != 0)
+        {
+            facingDirection = velocity.x > 0 ? Directions.RIGHT : Directions.LEFT;
+        }
+
         if (facingDirection == Directions.LEFT)
         {
             spriteRenderer.flipX = true;
             enemyCollider.offset = colliderOffsetLeft;
         }
-        else if (facingDirection == Directions.RIGHT)
+        else
         {
             spriteRenderer.flipX = false;
             enemyCollider.offset = colliderOffsetRight;
         }
 
-        // TODO: This isn't working with astar pathing
-        if (moveDir.sqrMagnitude > 0)
+        if (velocity.sqrMagnitude > 0.1f)
         {
             animator.CrossFade(animMove, 0);
         }
