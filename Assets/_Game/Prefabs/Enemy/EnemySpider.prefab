@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866964033160536619}
   - component: {fileID: 8981559248858788642}
+  - component: {fileID: 8309106563929949952}
   m_Layer: 8
   m_Name: SpiderGFX
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8309106563929949952
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849251835082180279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d6d46d609160c044bb8304154825855, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4299746458796710996
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +211,10 @@ MonoBehaviour:
   shootingRange: 5
   shootCooldown: 2
   resourcesOnDeath: 100
+  rb: {fileID: 4299746458796710992}
+  animator: {fileID: 8309106563929949952}
+  spriteRenderer: {fileID: 8981559248858788642}
+  enemyCollider: {fileID: 4299746458796710993}
 --- !u!114 &4299746458796710994
 MonoBehaviour:
   m_ObjectHideFlags: 0
