@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            FindObjectOfType<DeathScreenManager>().ShowDeathScreen();
         }
     }
 
