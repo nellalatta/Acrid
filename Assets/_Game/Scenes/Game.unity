@@ -12385,6 +12385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 1590788538}
   healthBar: {fileID: 2083610652}
+  rb: {fileID: 1590788534}
 --- !u!114 &1590788537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21613,7 +21614,7 @@ Tilemap:
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: 480960610, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
-      m_AnimationSpeed: 3.1338434
+      m_AnimationSpeed: 2.7435904
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: 1, z: 0}
@@ -21623,7 +21624,7 @@ Tilemap:
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: 480960610, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
       - {fileID: -827515205, guid: 36bd40077cad86b46aa653295bafa42f, type: 3}
-      m_AnimationSpeed: 3.0565758
+      m_AnimationSpeed: 3.927739
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerStats stats;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private Rigidbody2D rb;
 
     private float currentHealth;
 
@@ -20,6 +21,21 @@ public class Player : MonoBehaviour, IDamageable
         healthBar = GetComponentInChildren<HealthBar>();
         healthBar.UpdateHealthBar(currentHealth, stats.maxHealth);
     }
+
+    private void Update()
+    {
+        if (rb == null) return;
+
+        if (rb.velocity.magnitude < 0.1f)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+        else
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
+    }
+
 
     public void Damage(float damageAmount)
     {
