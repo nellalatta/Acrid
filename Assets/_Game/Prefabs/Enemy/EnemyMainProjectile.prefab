@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511da8f671d964b40a458754fd24b1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalBulletSpeed: 3
+  normalBulletSpeed: 5
   normalBulletDamage: 1
   destroyTime: 3
   whatDestroysBullet:
