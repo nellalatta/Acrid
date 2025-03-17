@@ -14,6 +14,7 @@ public class EnemySpider : MonoBehaviour, IDamageable
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D enemyCollider;
+    [SerializeField] private GameObject deadSpiderPrefab;
     // [SerializeField] private float moveSpeed = 2f;
 
     private enum Directions { LEFT, RIGHT }
@@ -127,7 +128,15 @@ public class EnemySpider : MonoBehaviour, IDamageable
         {
             Destroy(gameObject);
             resourceManager.AddResources(resourcesOnDeath);
+            SpawnDeadBody();
         }
     }
 
+    private void SpawnDeadBody()
+    {
+        if (deadSpiderPrefab != null)
+        {
+            Instantiate(deadSpiderPrefab, transform.position, Quaternion.identity);
+        }
+    }
 }

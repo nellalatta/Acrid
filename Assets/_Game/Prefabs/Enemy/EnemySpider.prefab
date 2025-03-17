@@ -215,6 +215,7 @@ MonoBehaviour:
   animator: {fileID: 8309106563929949952}
   spriteRenderer: {fileID: 8981559248858788642}
   enemyCollider: {fileID: 4299746458796710993}
+  deadSpiderPrefab: {fileID: 6550125055276609351, guid: f103da69fc7a82d409e7712235915d24, type: 3}
 --- !u!114 &4299746458796710994
 MonoBehaviour:
   m_ObjectHideFlags: 0
