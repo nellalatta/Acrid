@@ -1,32 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
-public class EnemySpider : MonoBehaviour, IDamageable
+public class EnemySpider : Enemy
 {
-    [SerializeField] private float maxHealth = 5f;
-    [SerializeField] private HealthBar healthBar;
     [SerializeField] private float shootingRange = 5f;
     [SerializeField] private float shootCooldown = 2f;
-    [SerializeField] private int resourcesOnDeath = 100;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private BoxCollider2D enemyCollider;
-    [SerializeField] private GameObject deadSpiderPrefab;
-    // [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private Weapon weapon;
 
-    private enum Directions { LEFT, RIGHT }
-    private float currentHealth;
     private Transform player;
-    private ResourceManager resourceManager;
-    private Weapon weapon;
     private float shootTimer;
     private Vector2 moveDir = Vector2.zero;
+
+    private enum Directions { LEFT, RIGHT }
     private Directions facingDirection = Directions.RIGHT;
-    private AIPath aiPath;
-    
 
     private readonly int animMove = Animator.StringToHash("Enemy_Spider_Walk_Right");
     private readonly int animIdle = Animator.StringToHash("Enemy_Spider_Idle_Right");
@@ -34,23 +19,18 @@ public class EnemySpider : MonoBehaviour, IDamageable
     private Vector2 colliderOffsetRight;
     private Vector2 colliderOffsetLeft => new Vector2(-colliderOffsetRight.x, colliderOffsetRight.y);
 
-    private void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar = GetComponentInChildren<HealthBar>();
-        healthBar.UpdateHealthBar(maxHealth, maxHealth);
+        base.Start();
 
-        player = GameObject.FindGameObjectWithTag("Player").transform; // Find the player by tag
-        weapon = GetComponent<Weapon>(); 
-
-        resourceManager = FindObjectOfType<ResourceManager>();
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        weapon = GetComponent<Weapon>();
         colliderOffsetRight = enemyCollider.offset;
-
-        aiPath = GetComponent<AIPath>();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         shootTimer += Time.deltaTime;
 
         if (player != null)
@@ -58,14 +38,7 @@ public class EnemySpider : MonoBehaviour, IDamageable
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             moveDir = (player.position - transform.position).normalized;
             CalculateFacingDirection();
-            UpdateAnimation();
 
-            // if (distanceToPlayer > shootingRange / 2)
-            // {
-            //     MoveTowardsPlayer();
-            // }
-
-            // Shoot if within shooting range and cooldown is ready
             if (distanceToPlayer <= shootingRange && shootTimer >= shootCooldown)
             {
                 weapon.MainShoot(player.position);
@@ -82,7 +55,7 @@ public class EnemySpider : MonoBehaviour, IDamageable
         }
     }
 
-    private void UpdateAnimation()
+    protected override void UpdateAnimation()
     {
         Vector2 velocity = aiPath.velocity;
 
@@ -91,52 +64,9 @@ public class EnemySpider : MonoBehaviour, IDamageable
             facingDirection = velocity.x > 0 ? Directions.RIGHT : Directions.LEFT;
         }
 
-        if (facingDirection == Directions.LEFT)
-        {
-            spriteRenderer.flipX = true;
-            enemyCollider.offset = colliderOffsetLeft;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-            enemyCollider.offset = colliderOffsetRight;
-        }
+        spriteRenderer.flipX = facingDirection == Directions.LEFT;
+        enemyCollider.offset = facingDirection == Directions.LEFT ? colliderOffsetLeft : colliderOffsetRight;
 
-        if (velocity.sqrMagnitude > 0.1f)
-        {
-            animator.CrossFade(animMove, 0);
-        }
-        else
-        {
-            animator.CrossFade(animIdle, 0);
-        }
-    }
-
-    // private void MoveTowardsPlayer()
-    // {
-    //     // Calculate direction to the player and move toward them
-    //     Vector2 direction = (player.position - transform.position).normalized;
-    //     transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
-    // }
-
-    public void Damage(float damageAmount)
-    {
-        currentHealth -= damageAmount;
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
-
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-            resourceManager.AddResources(resourcesOnDeath);
-            SpawnDeadBody();
-        }
-    }
-
-    private void SpawnDeadBody()
-    {
-        if (deadSpiderPrefab != null)
-        {
-            Instantiate(deadSpiderPrefab, transform.position, Quaternion.identity);
-        }
+        animator.CrossFade(velocity.sqrMagnitude > 0.1f ? animMove : animIdle, 0);
     }
 }
